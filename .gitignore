@@ -1,0 +1,7 @@
+node_modules/
+api/vendor/
+api/database/config.php
+.env
+*.env
+*.log
+*.yaml

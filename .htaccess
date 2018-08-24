@@ -1,0 +1,16 @@
+<Files package.json>
+  Order allow,deny
+  Deny from all
+</Files>
+<Files package-lock.json>
+  Order allow,deny
+  Deny from all
+</Files>
+<Files .htaccess>
+  Order allow,deny
+  Deny from all
+</Files>
+<Files .eslintrc.js>
+  Order allow,deny
+  Deny from all
+</Files>

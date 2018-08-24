@@ -1,0 +1,23 @@
+<!-- This is the PIS component template -->
+<v-data-table class="elevation-1" :headers="colunas" :items="marcacoes" :loading="carregando" :rows-per-page-items="rowsPerPage"
+  rows-per-page-text="Linhas por página" disable-initial-sort>
+  <template slot="items" slot-scope="props">
+    <td class="text-xs-right">{{ props.item.data }}</td>
+    <td class="text-xs-left">{{ props.item.times[0] || '' }}</td>
+    <td class="text-xs-left">{{ props.item.times[1] || '' }}</td>
+    <td class="text-xs-left">{{ props.item.times[2] || '' }}</td>
+    <td class="text-xs-left">{{ props.item.times[3] || '' }}</td>
+    <td class="text-xs-left">{{ props.item.times.slice(4).join(', ') }}</td>
+  </template>
+  <template slot="pageText" slot-scope="props">
+    Exibindo {{ props.pageStart }} - {{ props.pageStop }} de {{ props.itemsLength }}
+  </template>
+  <template slot="no-data">
+    <v-alert v-if="carregando" :value="true" color="info" icon="info">
+      Carregando dados de ponto do PIS {{ pis }}
+    </v-alert>
+    <v-alert v-if="!carregando" :value="true" color="warning" icon="warning">
+      Não foram encontrados dados referentes ao PIS {{ pis }}
+    </v-alert>
+  </template>
+</v-data-table>

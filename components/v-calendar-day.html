@@ -1,0 +1,33 @@
+<!-- v-calendar-day template -->
+<v-flex xs2 sm2 class="v-calendar-day">
+  <v-card
+    flat
+    tile
+    :hover="!day.otherMonth"
+    :ripple="!day.otherMonth"
+    :class="['v-calendar-day-card', day.otherMonth ? 'v-calendar-day-faded' : '']"
+  >
+    <v-card-title class="py-1 px-1 v-calendar-day-card-title">
+      <h2 :class="['title', 'v-calendar-day-card-title-header', 'font-weight-thin', weekend]">
+        {{day.dia}}
+      </h2>
+      <div v-if="marcacoes.length > 1" class="caption font-weight-regular float-right">
+        {{marcacoes.time}}
+      </div>
+    </v-card-title>
+    <v-card-text class="py-1 px-1 mb-0 caption font-weight-light text-lighten-black v-calendar-day-card-body">
+      <div v-if="marcacoes.length > 0" class="pb-1 marcacao-time">
+        {{marcacoes.morningIn}}&nbsp;-&nbsp;{{marcacoes.morningOut}}
+      </div>
+      <div v-else class="pb-1 marcacao-time">&nbsp;</div>
+      <div v-if="marcacoes.length > 2" class="pb-1 marcacao-time">
+        {{marcacoes.eveningIn}}&nbsp;-&nbsp;{{marcacoes.eveningOut}}
+      </div>
+      <div v-else class="pb-1 marcacao-time">&nbsp;</div>
+      <div v-if="marcacoes.length > 4" class="py-1 footer-extra">
+        Mais {{marcacoes.extras.length}}
+      </div>
+      <div v-else class="py-1 footer-extra">&nbsp;</div>
+    </v-card-text>
+  </v-card>
+</v-flex>

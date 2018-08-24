@@ -1,0 +1,30 @@
+<!-- this is the calendar component template -->
+<div class="v-calendar-wrapper">
+  <v-layout align-center justify-space-between row fill-height class="v-calendar-headline">
+    <span>
+      <v-btn right small flat fab @click="prev()">
+        <v-icon>chevron_left</v-icon>
+      </v-btn>
+      <v-btn right small flat fab @click="next()">
+        <v-icon>chevron_right</v-icon>
+      </v-btn>
+    </span>
+    <span class="display-1" style="width: auto">{{ calendarMonthTitle }}</span>
+  </v-layout>
+  <div class="v-calendar">
+    <v-layout class="v-calendar-header-layout">
+      <v-flex xs2 sm2 v-for="(weekday, weekdayNumber) in weekdays" :key="weekdayNumber">
+        <v-card flat tile>
+          <v-card-title class="py-1 v-calendar-header-card-title">
+            {{ weekday }}
+          </v-card-title>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <v-calendar-week
+      v-for="(week, weekNumber) in weeks"
+      :key="weekNumber"
+      :week="week"
+    />
+  </div>
+</div>

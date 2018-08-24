@@ -1,0 +1,29 @@
+.float-right {
+  margin-left: auto;
+  order: 2;
+}
+
+.v-calendar-day-card {
+  border-top: 0.1em solid rgba(0,0,0,0.2);
+  border-left: 0.1em solid rgba(0,0,0,0.2)
+}
+
+.v-calendar {
+  border-bottom: 0.1em solid rgba(0,0,0,0.2);
+  border-right: 0.1em solid rgba(0,0,0,0.2);
+}
+
+.v-calendar-header-layout {
+  border-top: 0.1em solid rgba(0,0,0,0.2);
+  border-left: 0.1em solid rgba(0,0,0,0.2)
+}
+
+.v-calendar-day-faded {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(128,128,128,0.1);
+}
+
+.v-calendar-day-weekend {
+  color: rgba(20, 20, 20, 0.4) !important;
+}
