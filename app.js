@@ -10,7 +10,9 @@ moment.locale('pt-br');
 // build the store
 var store = new Vuex.Store({
   state: {
-    pis: null
+    pis: null,
+    drawerOpen: false,
+    darkTheme: false
   },
   mutations: {
     initialiseStore: function (state) {
@@ -20,29 +22,32 @@ var store = new Vuex.Store({
           // nothing to load from localStorage, abort
           return false;
         }
-        var savedState = JSON.parse();
+        var savedState = JSON.parse(rawSavedState);
         var newState = Object.assign(state, savedState);
         this.replaceState(newState);
       }
     },
-    PIS_DEFINE: function (state, pis) {
-      state.pis = pis;
+    PIS: function (state, newValue) {
+      state.pis = newValue;
     },
-    PIS_DELETE: function (state) {
-      state.pis = null;
+    DRAWER: function (state, newValue) {
+      state.drawerOpen = (newValue === true);
+    },
+    DARK: function (state, newValue) {
+      state.darkTheme = (newValue === true);
     }
   }
 });
 
+// Store the state object as a JSON string
 store.subscribe(function (mutation, state) {
-  // Store the state object as a JSON string
   localStorage.setItem('store', JSON.stringify(state));
 });
 
 // define routes:
 var routes = [
   { path: '/', component: Vue.component('route-main') },
-  { path: '/marcacoes', component: Vue.component('marcacoes') }
+  { path: '/calendar', component: Vue.component('route-calendar') }
 ];
 
 // instance VueRouter with routes
@@ -74,7 +79,16 @@ var App = new Vue({
   data: function () {
     return {
       darkTheme: false,
-      sidebarOpen: false,
+      sidebarOpen: {
+        _open: false,
+        get: function () {
+          return this._open;
+        },
+        set: function (newValue) {
+          this._open = newValue;
+          return this;
+        }
+      },
     };
   }
 }).$mount('#app');

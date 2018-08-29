@@ -12,7 +12,8 @@ Vue.component('v-calendar-day', {
       return this.day.weekday === 0 || this.day.weekday === 6 ? 'v-calendar-day-weekend' : '';
     },
     marcacoes: function () {
-      var times = this.day ? 'marcacoes' in this.day ? this.day.marcacoes : [] : [];
+      var unorderedTimes = this.day ? 'marcacoes' in this.day ? this.day.marcacoes : [] : [];
+      var times = unorderedTimes.slice(0).sort();
       var morningDiff = times.length >= 2
         ? moment(times[1], this.tfmt)
           .diff(moment(times[0], this.tfmt))

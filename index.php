@@ -21,13 +21,9 @@
 <body>
   <!-- root app -->
   <div id="app">
-    <v-app :dark="darkTheme">
-      <v-sidebar
-        :open="sidebarOpen"
-        :toggle-dark-theme="toggleTheme"
-        :dark="darkTheme"
-      ></v-sidebar>
-      <v-topbar :toggle-sidebar="toggleSidebar"></v-topbar>
+    <v-app :dark="$store.state.darkTheme">
+      <v-sidebar></v-sidebar>
+      <v-topbar></v-topbar>
       <v-content>
         <v-container fluid>
           <router-view></router-view>
@@ -41,6 +37,7 @@
     'v-calendar-week',
     'v-calendar',
     'marcacoes',
+    'route-calendar',
     'route-main',
     'v-sidebar',
     'v-topbar'

@@ -1,9 +1,8 @@
-<div>
-  <v-calendar
-    :marcacoes="marcacoes"
-    :year="year"
-    :month="month"
-    :next-month="next"
-    :prev-month="prev"
-  />
+<div class="route-main">
+  <div v-if="!logged">
+    Faça login com seu PIS na barra lateral para exibir seus dados
+  </div>
+  <div v-if="logged">
+    <v-btn @click="go('/calendar')">Calendário de ponto</v-btn>
+  </div>
 </div>

@@ -1,26 +1,48 @@
-<v-navigation-drawer :clipped="$vuetify.breakpoint.lgAndUp" v-model="isOpen" fixed app>
+<v-navigation-drawer
+  :clipped="$vuetify.breakpoint.lgAndUp"
+  v-model="isOpen"
+  fixed
+  app
+>
   <v-list dense>
-    <template v-for="item in items">
-      <v-layout v-if="item.heading" :key="item.heading" row align-center>
-        <v-flex xs6>
-          <v-subheader v-if="item.heading">
-            {{ item.heading }}
-          </v-subheader>
-        </v-flex>
-        <v-flex xs6 class="text-xs-center">
-          <a href="#!" class="body-2 black--text">EDIT</a>
-        </v-flex>
-      </v-layout>
-      <v-list-tile v-else :key="item.text" @click="executar(item)">
+    <template>
+      <v-list-tile class="hidden-md-and-up" @click="$router.push('/')">
         <v-list-tile-action>
-          <v-icon>{{ item.icon }}</v-icon>
+          <v-icon>home</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>
-            {{ item.text }}
-          </v-list-tile-title>
+          <v-list-tile-title>Página inicial</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
+      <template v-for="(item, key) in items">
+        <v-layout
+          v-if="item.heading && showItem(item)"
+          :key="key"
+          align-center
+          row
+        >
+          <v-flex xs12>
+            <v-divider v-if="key > 0"></v-divider>
+            <v-subheader v-if="item.heading">
+              {{ item.heading }}
+            </v-subheader>
+          </v-flex>
+        </v-layout>
+        <v-list-tile
+          v-if="!item.heading && showItem(item)"
+          :key="key"
+          @click="executar(item)"
+        >
+          <v-list-tile-action>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>
+              {{ item.text }}
+            </v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </template>
     </template>
   </v-list>
 </v-navigation-drawer>
