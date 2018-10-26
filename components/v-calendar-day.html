@@ -1,11 +1,11 @@
 <!-- v-calendar-day template -->
-<v-flex xs2 sm2 class="v-calendar-day">
+<v-flex sm12 md2 class="['v-calendar-day']" @click="showDetails">
   <v-card
     flat
     tile
     :hover="!day.otherMonth"
     :ripple="!day.otherMonth"
-    :class="['v-calendar-day-card', day.otherMonth ? 'v-calendar-day-faded' : '']"
+    :class="['v-calendar-day-card', day.otherMonth ? 'v-calendar-day-faded hidden-sm-and-down' : '']"
   >
     <v-card-title class="py-1 px-1 v-calendar-day-card-title">
       <h2 :class="['title', 'v-calendar-day-card-title-header', 'font-weight-thin', weekend]">
@@ -25,7 +25,7 @@
       </div>
       <div v-else class="pb-1 marcacao-time">&nbsp;</div>
       <div v-if="marcacoes.length > 4" class="py-1 footer-extra">
-        Mais {{marcacoes.extras.length - 4}}
+        Mais {{marcacoes.length - 4}}
       </div>
       <div v-else class="py-1 footer-extra">&nbsp;</div>
     </v-card-text>

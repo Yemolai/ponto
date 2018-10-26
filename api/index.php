@@ -9,6 +9,6 @@ $debug = true;
 $_ENV['SLIM_MODE'] = $debug ? 'development' : 'production';
 ini_set('display_errors', $debug ? '5' : '0'); // to show/hide all errors
 
-$apiOptions = array();
+$apiOptions = array('displayErrorDetails' => true);
 
 $app = setupAPI(new \Slim\App(), $apiOptions)->run();

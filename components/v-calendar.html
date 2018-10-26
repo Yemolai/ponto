@@ -1,7 +1,7 @@
 <!-- this is the calendar component template -->
 <div class="v-calendar-wrapper">
   <v-layout align-center justify-space-between row fill-height class="v-calendar-headline">
-    <span>
+    <span class="hidden-sm-and-down">
       <v-btn right small flat fab @click="prev()">
         <v-icon>chevron_left</v-icon>
       </v-btn>
@@ -9,10 +9,20 @@
         <v-icon>chevron_right</v-icon>
       </v-btn>
     </span>
-    <span class="display-1" style="width: auto">{{ calendarMonthTitle }}</span>
+    <span class="title"><span class="hidden-md-and-down">PIS&nbsp;</span>{{$store.state.pis}}</span>
+    <span class="display-1 hidden-sm-and-down" style="width: auto">{{ calendarMonthTitle }}</span>
+    <span class="display-1 hidden-md-and-up" style="width: auto">{{ monthTitle }}</span>
   </v-layout>
+  <span class="hidden-md-and-up">
+    <v-btn fixed left bottom small fab @click="prev()">
+      <v-icon>chevron_left</v-icon>
+    </v-btn>
+    <v-btn fixed right bottom small fab @click="next()">
+      <v-icon>chevron_right</v-icon>
+    </v-btn>
+  </span>
   <div class="v-calendar">
-    <v-layout class="v-calendar-header-layout">
+    <v-layout class="hidden-sm-and-down v-calendar-header-layout">
       <v-flex xs2 sm2 v-for="(weekday, weekdayNumber) in weekdays" :key="weekdayNumber">
         <v-card flat tile>
           <v-card-title class="py-1 v-calendar-header-card-title">
@@ -27,4 +37,5 @@
       :week="week"
     />
   </div>
+  <v-calendar-dialog></v-calendar-dialog>
 </div>

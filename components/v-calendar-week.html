@@ -1,3 +1,8 @@
-<v-layout class="full-height">
-  <v-calendar-day v-for="(day, weekday) in thisWeek" :key="weekday" :day="day"/>
-</v-layout>
+<div>
+  <v-layout v-if="desktop" class="full-height" fill-height row>
+    <v-calendar-day v-for="(day, weekday) in thisWeek" :key="weekday" :day="day"/>
+  </v-layout>
+  <v-layout v-if="mobile" class="full-height" fill-height column>
+    <v-calendar-day v-for="(day, weekday) in thisWeek" :key="weekday" :day="day" />
+  </v-layout>
+</div>

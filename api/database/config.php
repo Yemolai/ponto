@@ -19,7 +19,7 @@ $serviceContainer->setAdapterClass('ponto', 'mysql');
 $manager = new \Propel\Runtime\Connection\ConnectionManagerSingle();
 $manager->setConfiguration(array (
   'classname' => 'Propel\\Runtime\\Connection\\ConnectionWrapper',
-  'dsn' => 'mysql:host=devserver;dbname=ponto',
+  'dsn' => 'mysql:host=localhost;dbname=ponto',
   'user' => 'ponto_reader',
   'password' => '#p0nt0#',
   'settings' =>

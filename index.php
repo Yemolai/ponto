@@ -7,12 +7,20 @@
   <link rel="icon" href="./favicon.ico" />
   <link rel="stylesheet" href="./lib/vuetify.min.css">
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-  <title>Marcação de ponto</title>
+  <title>Ponto</title>
   <?php # to generate imports easily
     function println($text) {
       echo "\n" . $text . "\n";
     }
-    $libs = array('vue.js', 'vue-router.js', 'vuex.js', 'axios.js', 'vuetify.js', 'moment.js');
+    $libs = array(
+      'vue.min.js',
+      'vue-router.min.js',
+      'vuex.min.js',
+      'axios.min.js',
+      'vuetify.min.js',
+      'moment.min.js',
+      'moment.pt-br.min.js'
+    );
     foreach ($libs as $lib) { ?>
     <script src="./lib/<?=$lib?>"></script>
   <?php } ?>
@@ -33,6 +41,7 @@
   </div>
   <?php
   $components = array(
+    'v-calendar-dialog',
     'v-calendar-day',
     'v-calendar-week',
     'v-calendar',

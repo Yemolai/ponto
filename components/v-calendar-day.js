@@ -4,8 +4,21 @@ Vue.component('v-calendar-day', {
   props: ['day'],
   data: function () {
     return {
-      tfmt: 'HH:mm'
+      tfmt: 'HH:mm',
+      details: false
     };
+  },
+  methods: {
+    showDetails: function () {
+      var unorderedTimes = this.day ? 'marcacoes' in this.day ? this.day.marcacoes : [] : [];
+      var times = unorderedTimes.slice(0).sort();
+      var data = {
+        date: this.day.dia || '',
+        marcacoes: times
+      };
+      this.$store.commit('CALENDAR_DIALOG_DATA', data);
+      this.$store.commit('SHOW_CALENDAR_DIALOG', true);
+    }
   },
   computed: {
     weekend: function () {

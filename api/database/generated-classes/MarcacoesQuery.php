@@ -47,8 +47,10 @@ class MarcacoesQuery extends BaseMarcacoesQuery
     $strM = str_pad((string)$m, 2, '0', STR_PAD_LEFT);
     $strMin = implode('-', array($y, $strM, '01'));
     $min = Datetime::createFromFormat('Y-m-d', $strMin, $tz);
+    $min->setTime(0, 0, 0); // para garantir inicio
     $lastDay = $min->format('t');
     $max = Datetime::createFromFormat('Y-m-d', implode('-', array($y, $strM, $lastDay)), $tz);
+    $max->setTime(23, 59, 59); // para garantir último segundo do dia
     return $this->filterByDatetime(['min' => $min, 'max' => $max]);
   }
 

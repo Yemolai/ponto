@@ -12,7 +12,9 @@ var store = new Vuex.Store({
   state: {
     pis: null,
     drawerOpen: false,
-    darkTheme: false
+    darkTheme: false,
+    showCalendarDialog: false,
+    calendarDialogData: null
   },
   mutations: {
     initialiseStore: function (state) {
@@ -25,6 +27,15 @@ var store = new Vuex.Store({
         var savedState = JSON.parse(rawSavedState);
         var newState = Object.assign(state, savedState);
         this.replaceState(newState);
+      }
+    },
+    CALENDAR_DIALOG_DATA: function (state, newValue) {
+      state.calendarDialogData = newValue;
+    },
+    SHOW_CALENDAR_DIALOG: function (state, newValue) {
+      state.showCalendarDialog = newValue;
+      if (newValue === null) {
+        state.calendarDialogData = null;
       }
     },
     PIS: function (state, newValue) {

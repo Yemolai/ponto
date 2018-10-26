@@ -46,6 +46,9 @@ Vue.component('v-calendar', {
       var m = isNaN(M) || M < 1 || M > 12 ? (new Date()).getMonth() : M - 1;
       return moment().year(y).month(m).date(1);
     },
+    monthTitle: function () {
+      return this.referenceDate.format('MM/YYYY');
+    },
     calendarMonthTitle: function () {
       return this.referenceDate.format('MMMM [de] YYYY');
     },

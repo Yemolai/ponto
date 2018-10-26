@@ -3,6 +3,9 @@
     Faça login com seu PIS na barra lateral para exibir seus dados
   </div>
   <div v-if="logged">
-    <v-btn @click="go('/calendar')">Calendário de ponto</v-btn>
+    <v-container fluid>
+      <p>Você está <em>logado</em> como portador do PIS {{ $store.state.pis }}</p>
+      <v-btn @click="go('/calendar')">Calendário de ponto</v-btn>
+    </v-container>
   </div>
 </div>
