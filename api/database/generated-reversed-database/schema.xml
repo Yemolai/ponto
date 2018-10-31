@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<database name="ponto" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
   <table name="_migrations" idMethod="native" phpName="Migrations">
     <column name="name" phpName="Name" type="VARCHAR" size="255" primaryKey="true" required="true"/>
     <unique name="name">
@@ -14,26 +14,14 @@
     <column name="nome" phpName="Nome" type="VARCHAR" size="255"/>
     <column name="matricula" phpName="Matricula" type="DECIMAL" size="11" scale="0"/>
     <column name="pis" phpName="Pis" type="DECIMAL" size="11" scale="0" required="true"/>
-    <column name="createdAt" phpName="Createdat" type="TIMESTAMP" required="true"/>
-    <column name="updatedAt" phpName="Updatedat" type="TIMESTAMP" required="true"/>
-    <column name="samaccountname" phpName="samaccountname" type="VARCHAR" size="255"/>
-    <column name="username" phpName="username" type="VARCHAR" size="255"/>
-    <column name="userprincipalname" phpName="userprincipalname" type="VARCHAR" size="255"/>
-    <column name="dn" phpName="dn" type="VARCHAR" size="255"/>
+    <column name="createdAt" phpName="Createdat" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="updatedAt" phpName="Updatedat" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="samaccountname" phpName="Samaccountname" type="VARCHAR" size="255"/>
+    <column name="userprincipalname" phpName="Userprincipalname" type="VARCHAR" size="255"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="255"/>
+    <column name="dn" phpName="Dn" type="VARCHAR" size="255"/>
     <unique name="pis">
       <unique-column name="pis"/>
-    </unique>
-    <unique name="idx_funcionarios_unique_samaccountname">
-      <unique-column name="samaccountname"/>
-    </unique>
-    <unique name="idx_funcionarios_unique_username">
-      <unique-column name="username"/>
-    </unique>
-    <unique name="idx_funcionarios_unique_dn">
-      <unique-column name="dn"/>
-    </unique>
-    <unique name="idx_funcionarios_unique_userprincipalname">
-      <unique-column name="userprincipalname"/>
     </unique>
     <vendor type="mysql">
       <parameter name="Engine" value="InnoDB"/>

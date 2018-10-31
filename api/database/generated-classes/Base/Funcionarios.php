@@ -109,6 +109,34 @@ abstract class Funcionarios implements ActiveRecordInterface
     protected $updatedat;
 
     /**
+     * The value for the samaccountname field.
+     *
+     * @var        string
+     */
+    protected $samaccountname;
+
+    /**
+     * The value for the username field.
+     *
+     * @var        string
+     */
+    protected $username;
+
+    /**
+     * The value for the userprincipalname field.
+     *
+     * @var        string
+     */
+    protected $userprincipalname;
+
+    /**
+     * The value for the dn field.
+     *
+     * @var        string
+     */
+    protected $dn;
+
+    /**
      * @var        ObjectCollection|ChildMarcacoes[] Collection to store aggregation of ChildMarcacoes objects.
      */
     protected $collMarcacoess;
@@ -434,6 +462,46 @@ abstract class Funcionarios implements ActiveRecordInterface
     }
 
     /**
+     * Get the [samaccountname] column value.
+     *
+     * @return string
+     */
+    public function getsamaccountname()
+    {
+        return $this->samaccountname;
+    }
+
+    /**
+     * Get the [username] column value.
+     *
+     * @return string
+     */
+    public function getusername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * Get the [userprincipalname] column value.
+     *
+     * @return string
+     */
+    public function getuserprincipalname()
+    {
+        return $this->userprincipalname;
+    }
+
+    /**
+     * Get the [dn] column value.
+     *
+     * @return string
+     */
+    public function getdn()
+    {
+        return $this->dn;
+    }
+
+    /**
      * Set the value of [id] column.
      *
      * @param int $v new value
@@ -554,6 +622,86 @@ abstract class Funcionarios implements ActiveRecordInterface
     } // setUpdatedat()
 
     /**
+     * Set the value of [samaccountname] column.
+     *
+     * @param string $v new value
+     * @return $this|\Funcionarios The current object (for fluent API support)
+     */
+    public function setsamaccountname($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->samaccountname !== $v) {
+            $this->samaccountname = $v;
+            $this->modifiedColumns[FuncionariosTableMap::COL_SAMACCOUNTNAME] = true;
+        }
+
+        return $this;
+    } // setsamaccountname()
+
+    /**
+     * Set the value of [username] column.
+     *
+     * @param string $v new value
+     * @return $this|\Funcionarios The current object (for fluent API support)
+     */
+    public function setusername($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->username !== $v) {
+            $this->username = $v;
+            $this->modifiedColumns[FuncionariosTableMap::COL_USERNAME] = true;
+        }
+
+        return $this;
+    } // setusername()
+
+    /**
+     * Set the value of [userprincipalname] column.
+     *
+     * @param string $v new value
+     * @return $this|\Funcionarios The current object (for fluent API support)
+     */
+    public function setuserprincipalname($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->userprincipalname !== $v) {
+            $this->userprincipalname = $v;
+            $this->modifiedColumns[FuncionariosTableMap::COL_USERPRINCIPALNAME] = true;
+        }
+
+        return $this;
+    } // setuserprincipalname()
+
+    /**
+     * Set the value of [dn] column.
+     *
+     * @param string $v new value
+     * @return $this|\Funcionarios The current object (for fluent API support)
+     */
+    public function setdn($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->dn !== $v) {
+            $this->dn = $v;
+            $this->modifiedColumns[FuncionariosTableMap::COL_DN] = true;
+        }
+
+        return $this;
+    } // setdn()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -612,6 +760,18 @@ abstract class Funcionarios implements ActiveRecordInterface
                 $col = null;
             }
             $this->updatedat = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : FuncionariosTableMap::translateFieldName('samaccountname', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->samaccountname = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : FuncionariosTableMap::translateFieldName('username', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->username = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : FuncionariosTableMap::translateFieldName('userprincipalname', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->userprincipalname = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : FuncionariosTableMap::translateFieldName('dn', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->dn = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -620,7 +780,7 @@ abstract class Funcionarios implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 6; // 6 = FuncionariosTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 10; // 10 = FuncionariosTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\Funcionarios'), 0, $e);
@@ -859,6 +1019,18 @@ abstract class Funcionarios implements ActiveRecordInterface
         if ($this->isColumnModified(FuncionariosTableMap::COL_UPDATEDAT)) {
             $modifiedColumns[':p' . $index++]  = 'updatedAt';
         }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_SAMACCOUNTNAME)) {
+            $modifiedColumns[':p' . $index++]  = 'samaccountname';
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_USERNAME)) {
+            $modifiedColumns[':p' . $index++]  = 'username';
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_USERPRINCIPALNAME)) {
+            $modifiedColumns[':p' . $index++]  = 'userprincipalname';
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_DN)) {
+            $modifiedColumns[':p' . $index++]  = 'dn';
+        }
 
         $sql = sprintf(
             'INSERT INTO funcionarios (%s) VALUES (%s)',
@@ -887,6 +1059,18 @@ abstract class Funcionarios implements ActiveRecordInterface
                         break;
                     case 'updatedAt':
                         $stmt->bindValue($identifier, $this->updatedat ? $this->updatedat->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
+                        break;
+                    case 'samaccountname':
+                        $stmt->bindValue($identifier, $this->samaccountname, PDO::PARAM_STR);
+                        break;
+                    case 'username':
+                        $stmt->bindValue($identifier, $this->username, PDO::PARAM_STR);
+                        break;
+                    case 'userprincipalname':
+                        $stmt->bindValue($identifier, $this->userprincipalname, PDO::PARAM_STR);
+                        break;
+                    case 'dn':
+                        $stmt->bindValue($identifier, $this->dn, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -968,6 +1152,18 @@ abstract class Funcionarios implements ActiveRecordInterface
             case 5:
                 return $this->getUpdatedat();
                 break;
+            case 6:
+                return $this->getsamaccountname();
+                break;
+            case 7:
+                return $this->getusername();
+                break;
+            case 8:
+                return $this->getuserprincipalname();
+                break;
+            case 9:
+                return $this->getdn();
+                break;
             default:
                 return null;
                 break;
@@ -1004,6 +1200,10 @@ abstract class Funcionarios implements ActiveRecordInterface
             $keys[3] => $this->getPis(),
             $keys[4] => $this->getCreatedat(),
             $keys[5] => $this->getUpdatedat(),
+            $keys[6] => $this->getsamaccountname(),
+            $keys[7] => $this->getusername(),
+            $keys[8] => $this->getuserprincipalname(),
+            $keys[9] => $this->getdn(),
         );
         if ($result[$keys[4]] instanceof \DateTimeInterface) {
             $result[$keys[4]] = $result[$keys[4]]->format('c');
@@ -1086,6 +1286,18 @@ abstract class Funcionarios implements ActiveRecordInterface
             case 5:
                 $this->setUpdatedat($value);
                 break;
+            case 6:
+                $this->setsamaccountname($value);
+                break;
+            case 7:
+                $this->setusername($value);
+                break;
+            case 8:
+                $this->setuserprincipalname($value);
+                break;
+            case 9:
+                $this->setdn($value);
+                break;
         } // switch()
 
         return $this;
@@ -1129,6 +1341,18 @@ abstract class Funcionarios implements ActiveRecordInterface
         }
         if (array_key_exists($keys[5], $arr)) {
             $this->setUpdatedat($arr[$keys[5]]);
+        }
+        if (array_key_exists($keys[6], $arr)) {
+            $this->setsamaccountname($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setusername($arr[$keys[7]]);
+        }
+        if (array_key_exists($keys[8], $arr)) {
+            $this->setuserprincipalname($arr[$keys[8]]);
+        }
+        if (array_key_exists($keys[9], $arr)) {
+            $this->setdn($arr[$keys[9]]);
         }
     }
 
@@ -1188,6 +1412,18 @@ abstract class Funcionarios implements ActiveRecordInterface
         }
         if ($this->isColumnModified(FuncionariosTableMap::COL_UPDATEDAT)) {
             $criteria->add(FuncionariosTableMap::COL_UPDATEDAT, $this->updatedat);
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_SAMACCOUNTNAME)) {
+            $criteria->add(FuncionariosTableMap::COL_SAMACCOUNTNAME, $this->samaccountname);
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_USERNAME)) {
+            $criteria->add(FuncionariosTableMap::COL_USERNAME, $this->username);
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_USERPRINCIPALNAME)) {
+            $criteria->add(FuncionariosTableMap::COL_USERPRINCIPALNAME, $this->userprincipalname);
+        }
+        if ($this->isColumnModified(FuncionariosTableMap::COL_DN)) {
+            $criteria->add(FuncionariosTableMap::COL_DN, $this->dn);
         }
 
         return $criteria;
@@ -1280,6 +1516,10 @@ abstract class Funcionarios implements ActiveRecordInterface
         $copyObj->setPis($this->getPis());
         $copyObj->setCreatedat($this->getCreatedat());
         $copyObj->setUpdatedat($this->getUpdatedat());
+        $copyObj->setsamaccountname($this->getsamaccountname());
+        $copyObj->setusername($this->getusername());
+        $copyObj->setuserprincipalname($this->getuserprincipalname());
+        $copyObj->setdn($this->getdn());
 
         if ($deepCopy) {
             // important: temporarily setNew(false) because this affects the behavior of
@@ -1602,6 +1842,10 @@ abstract class Funcionarios implements ActiveRecordInterface
         $this->pis = null;
         $this->createdat = null;
         $this->updatedat = null;
+        $this->samaccountname = null;
+        $this->username = null;
+        $this->userprincipalname = null;
+        $this->dn = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->resetModified();

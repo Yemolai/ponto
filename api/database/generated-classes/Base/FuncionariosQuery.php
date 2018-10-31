@@ -26,6 +26,10 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFuncionariosQuery orderByPis($order = Criteria::ASC) Order by the pis column
  * @method     ChildFuncionariosQuery orderByCreatedat($order = Criteria::ASC) Order by the createdAt column
  * @method     ChildFuncionariosQuery orderByUpdatedat($order = Criteria::ASC) Order by the updatedAt column
+ * @method     ChildFuncionariosQuery orderBysamaccountname($order = Criteria::ASC) Order by the samaccountname column
+ * @method     ChildFuncionariosQuery orderByusername($order = Criteria::ASC) Order by the username column
+ * @method     ChildFuncionariosQuery orderByuserprincipalname($order = Criteria::ASC) Order by the userprincipalname column
+ * @method     ChildFuncionariosQuery orderBydn($order = Criteria::ASC) Order by the dn column
  *
  * @method     ChildFuncionariosQuery groupById() Group by the id column
  * @method     ChildFuncionariosQuery groupByNome() Group by the nome column
@@ -33,6 +37,10 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFuncionariosQuery groupByPis() Group by the pis column
  * @method     ChildFuncionariosQuery groupByCreatedat() Group by the createdAt column
  * @method     ChildFuncionariosQuery groupByUpdatedat() Group by the updatedAt column
+ * @method     ChildFuncionariosQuery groupBysamaccountname() Group by the samaccountname column
+ * @method     ChildFuncionariosQuery groupByusername() Group by the username column
+ * @method     ChildFuncionariosQuery groupByuserprincipalname() Group by the userprincipalname column
+ * @method     ChildFuncionariosQuery groupBydn() Group by the dn column
  *
  * @method     ChildFuncionariosQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildFuncionariosQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -62,7 +70,11 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFuncionarios findOneByMatricula(string $matricula) Return the first ChildFuncionarios filtered by the matricula column
  * @method     ChildFuncionarios findOneByPis(string $pis) Return the first ChildFuncionarios filtered by the pis column
  * @method     ChildFuncionarios findOneByCreatedat(string $createdAt) Return the first ChildFuncionarios filtered by the createdAt column
- * @method     ChildFuncionarios findOneByUpdatedat(string $updatedAt) Return the first ChildFuncionarios filtered by the updatedAt column *
+ * @method     ChildFuncionarios findOneByUpdatedat(string $updatedAt) Return the first ChildFuncionarios filtered by the updatedAt column
+ * @method     ChildFuncionarios findOneBysamaccountname(string $samaccountname) Return the first ChildFuncionarios filtered by the samaccountname column
+ * @method     ChildFuncionarios findOneByusername(string $username) Return the first ChildFuncionarios filtered by the username column
+ * @method     ChildFuncionarios findOneByuserprincipalname(string $userprincipalname) Return the first ChildFuncionarios filtered by the userprincipalname column
+ * @method     ChildFuncionarios findOneBydn(string $dn) Return the first ChildFuncionarios filtered by the dn column *
 
  * @method     ChildFuncionarios requirePk($key, ConnectionInterface $con = null) Return the ChildFuncionarios by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildFuncionarios requireOne(ConnectionInterface $con = null) Return the first ChildFuncionarios matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -73,6 +85,10 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFuncionarios requireOneByPis(string $pis) Return the first ChildFuncionarios filtered by the pis column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildFuncionarios requireOneByCreatedat(string $createdAt) Return the first ChildFuncionarios filtered by the createdAt column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildFuncionarios requireOneByUpdatedat(string $updatedAt) Return the first ChildFuncionarios filtered by the updatedAt column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildFuncionarios requireOneBysamaccountname(string $samaccountname) Return the first ChildFuncionarios filtered by the samaccountname column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildFuncionarios requireOneByusername(string $username) Return the first ChildFuncionarios filtered by the username column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildFuncionarios requireOneByuserprincipalname(string $userprincipalname) Return the first ChildFuncionarios filtered by the userprincipalname column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildFuncionarios requireOneBydn(string $dn) Return the first ChildFuncionarios filtered by the dn column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildFuncionarios[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildFuncionarios objects based on current ModelCriteria
  * @method     ChildFuncionarios[]|ObjectCollection findById(int $id) Return ChildFuncionarios objects filtered by the id column
@@ -81,6 +97,10 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildFuncionarios[]|ObjectCollection findByPis(string $pis) Return ChildFuncionarios objects filtered by the pis column
  * @method     ChildFuncionarios[]|ObjectCollection findByCreatedat(string $createdAt) Return ChildFuncionarios objects filtered by the createdAt column
  * @method     ChildFuncionarios[]|ObjectCollection findByUpdatedat(string $updatedAt) Return ChildFuncionarios objects filtered by the updatedAt column
+ * @method     ChildFuncionarios[]|ObjectCollection findBysamaccountname(string $samaccountname) Return ChildFuncionarios objects filtered by the samaccountname column
+ * @method     ChildFuncionarios[]|ObjectCollection findByusername(string $username) Return ChildFuncionarios objects filtered by the username column
+ * @method     ChildFuncionarios[]|ObjectCollection findByuserprincipalname(string $userprincipalname) Return ChildFuncionarios objects filtered by the userprincipalname column
+ * @method     ChildFuncionarios[]|ObjectCollection findBydn(string $dn) Return ChildFuncionarios objects filtered by the dn column
  * @method     ChildFuncionarios[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -179,7 +199,7 @@ abstract class FuncionariosQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT id, nome, matricula, pis, createdAt, updatedAt FROM funcionarios WHERE id = :p0';
+        $sql = 'SELECT id, nome, matricula, pis, createdAt, updatedAt, samaccountname, username, userprincipalname, dn FROM funcionarios WHERE id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -501,6 +521,106 @@ abstract class FuncionariosQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(FuncionariosTableMap::COL_UPDATEDAT, $updatedat, $comparison);
+    }
+
+    /**
+     * Filter the query on the samaccountname column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterBysamaccountname('fooValue');   // WHERE samaccountname = 'fooValue'
+     * $query->filterBysamaccountname('%fooValue%', Criteria::LIKE); // WHERE samaccountname LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $samaccountname The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildFuncionariosQuery The current query, for fluid interface
+     */
+    public function filterBysamaccountname($samaccountname = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($samaccountname)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(FuncionariosTableMap::COL_SAMACCOUNTNAME, $samaccountname, $comparison);
+    }
+
+    /**
+     * Filter the query on the username column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByusername('fooValue');   // WHERE username = 'fooValue'
+     * $query->filterByusername('%fooValue%', Criteria::LIKE); // WHERE username LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $username The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildFuncionariosQuery The current query, for fluid interface
+     */
+    public function filterByusername($username = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($username)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(FuncionariosTableMap::COL_USERNAME, $username, $comparison);
+    }
+
+    /**
+     * Filter the query on the userprincipalname column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByuserprincipalname('fooValue');   // WHERE userprincipalname = 'fooValue'
+     * $query->filterByuserprincipalname('%fooValue%', Criteria::LIKE); // WHERE userprincipalname LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $userprincipalname The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildFuncionariosQuery The current query, for fluid interface
+     */
+    public function filterByuserprincipalname($userprincipalname = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($userprincipalname)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(FuncionariosTableMap::COL_USERPRINCIPALNAME, $userprincipalname, $comparison);
+    }
+
+    /**
+     * Filter the query on the dn column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterBydn('fooValue');   // WHERE dn = 'fooValue'
+     * $query->filterBydn('%fooValue%', Criteria::LIKE); // WHERE dn LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $dn The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildFuncionariosQuery The current query, for fluid interface
+     */
+    public function filterBydn($dn = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($dn)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(FuncionariosTableMap::COL_DN, $dn, $comparison);
     }
 
     /**
